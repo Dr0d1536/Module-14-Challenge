@@ -8,6 +8,8 @@ d3.json(url).then((data) => {
     samples = data.samples;
     metadata = data.metadata;
        
+
+
 //Iterate data
     for (i = 0; i < samples.length; i++){
         subject_array.push(samples[i]["id"]);
@@ -27,9 +29,11 @@ d3.json(url).then((data) => {
         y_values_bar = bar_top_ten.map((x) => x[3]);
         text_bubble_bar = bar_top_ten.map((x) => x[2]);
     
+
+
         let bar_graph = {
-            x: y_values_bar, 
-            y: x_values_bar,
+            x: y_values_bar.reverse(), 
+            y: x_values_bar.reverse(),
             orientation: 'h',
             type: "bar",
             text_bubble_bar: text_bubble_bar
@@ -118,7 +122,9 @@ d3.json(url).then((data) => {
     function allCharts(){
         graphs();
         demographics_table();
-    };
+    }; 
+
+    allCharts()
 
     dropdown_menu.on("change", allCharts);
 });
